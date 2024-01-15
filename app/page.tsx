@@ -1,5 +1,11 @@
-import Image from 'next/image';
+import TopNavigation from '@/components/navigation/TopNavigation';
 
 export default function Home() {
-  return <div>heelo</div>;
+  return (
+    <>
+      <TopNavigation />
+      {/* <MainSection/> */}
+      {/* <BottomNavigation/> */}
+    </>
+  );
 }
