@@ -9,7 +9,7 @@ const NotoSansKR = Noto_Sans_KR({
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="ko" className={NotoSansKR.className}>
-      <body className="min-h-screen max-w-screen-xl">{children}</body>
+      <body className="min-h-screen max-w-screen-xl bg-gray-200">{children}</body>
     </html>
   );
 }
