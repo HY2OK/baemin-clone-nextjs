@@ -1,6 +1,7 @@
-import React from 'react';
-import MainCard from '../card/MainCard';
-import DeliveryCard from '../card/DeliveryCard';
+import React from 'react'
+import MainCard from '../card/MainCard'
+import DeliveryCard from '../card/DeliveryCard'
+import Link from 'next/link'
 
 function Mainsection() {
   const property = [
@@ -19,7 +20,7 @@ function Mainsection() {
       description: '배달은 지금 옵니다',
       imageUrl: '/images/store.webp',
     },
-  ];
+  ]
 
   return (
     <section className="h-full flex flex-col">
@@ -30,7 +31,7 @@ function Mainsection() {
       </div>
       <DeliveryCard />
     </section>
-  );
+  )
 }
 
-export default Mainsection;
+export default Mainsection

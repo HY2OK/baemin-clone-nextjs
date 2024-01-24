@@ -1,5 +1,5 @@
-import Image from 'next/image';
-import React from 'react';
+import Image from 'next/image'
+import React from 'react'
 
 function MainCard({ property }: { property: any }) {
   return (
@@ -21,7 +21,7 @@ function MainCard({ property }: { property: any }) {
         />
       </div>
     </>
-  );
+  )
 }
 
-export default MainCard;
+export default MainCard

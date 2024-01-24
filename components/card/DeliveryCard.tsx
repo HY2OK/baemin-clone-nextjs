@@ -1,6 +1,7 @@
-'use client';
+'use client'
 
-import Image from 'next/image';
+import Image from 'next/image'
+import Link from 'next/link'
 
 const deliveryIcons = [
   { iconURL: '/images/burger.png', title: '족발 보쌈' },
@@ -13,7 +14,7 @@ const deliveryIcons = [
   { iconURL: '/images/burger.png', title: '디저트' },
   { iconURL: '/images/burger.png', title: '찜 찌개' },
   { iconURL: '/images/burger.png', title: '전체 보기' },
-];
+]
 
 function DeliveryCard() {
   return (
@@ -46,15 +47,19 @@ function DeliveryCard() {
         </div>
         <div className="mt-4 grid grid-cols-5 gap-x-8 gap-y-4 content-center items-center justify-center">
           {deliveryIcons.map((value: any, index: number) => (
-            <div key={index} className="w-full flex flex-col items-center justify-center">
+            <Link
+              href={'/shop'}
+              key={index}
+              className="w-full flex flex-col items-center justify-center"
+            >
               <Image alt={value.title} width={40} height={40} src={value.iconURL} />
               <p className="text-xs">{value.title}</p>
-            </div>
+            </Link>
           ))}
         </div>
       </div>
     </>
-  );
+  )
 }
 
-export default DeliveryCard;
+export default DeliveryCard
