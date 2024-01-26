@@ -6,21 +6,21 @@ function ShopCard({ shop }: { shop: Shop }) {
     <div className="my-2 p-2 border-b border-e-gray-300 hover:cursor-pointer">
       <div className="flex w-full">
         <div className="w-16">
-          <div className="w-12 h-16 bg-slate-500"></div>
+          <div className="w-12 h-16 bg-slate-500">{shop.cardImage}</div>
         </div>
         <div className="flex flex-col text-xs">
-          <h2 className="font-semibold text-sm mb-1">title</h2>
+          <h2 className="font-semibold text-sm mb-1">{shop.title}</h2>
           <div className="flex gap-2">
-            <p>star</p>
-            <p>Descriptoin</p>
+            <p>{shop.star}</p>
+            <p>{shop.description}</p>
           </div>
           <div className="flex gap-2">
-            <p>DeliveryTime</p>
-            <p>DeliveryFee</p>
+            <p>{shop.deliveryTime}</p>
+            <p>{shop.deliveryFee}</p>
           </div>
           <div className="flex">
-            <p>minimum order</p>
-            <p>tag</p>
+            <p>{shop.minumumOrder}</p>
+            <p>{shop.tags}</p>
           </div>
         </div>
       </div>

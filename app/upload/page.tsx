@@ -5,24 +5,30 @@ function Upload({ searchParam }: { searchParam: { message: string } }) {
   async function posting(data: FormData) {
     'use server'
 
-    const uploadPost = await prisma.shop.create({
-      data: {
-        title: data.get('title')?.toString() as string,
-        description: data.get('description')?.toString() as string,
-        star: parseInt(data.get('star')?.toString() as string),
-        deliveryTime: data.get('deliveryTime')?.toString() as string,
-        deliveryFee: data.get('deliveryFee')?.toString() as string,
-        minumumOrder: parseInt(data.get('minumumOrder')?.toString() as string),
-        cardImage: data.get('cardImage')?.toString() as string,
-        coverImage: data.get('coverImage')?.toString() as string,
-        tags: data.get('tags')?.toString() as string,
-      },
+    const success = await fetch(`http://localhost:3000/api/shop`, {
+      method: 'post',
+      body: data,
     })
 
-    if (uploadPost) {
-      return redirect('/upload?message=success')
+    if (!success) {
+      redirect('/upload?message=something is wrong')
     }
-    return redirect('/upload?message=something is worng')
+
+    for (var i = 0; i < 10; i++) {
+      const uploadPost = await prisma.shop.create({
+        data: {
+          title: data.get('title')?.toString() as string,
+          description: data.get('description')?.toString() as string,
+          star: parseInt(data.get('star')?.toString() as string),
+          deliveryTime: data.get('deliveryTime')?.toString() as string,
+          deliveryFee: data.get('deliveryFee')?.toString() as string,
+          minumumOrder: parseInt(data.get('minumumOrder')?.toString() as string),
+          cardImage: data.get('cardImage')?.toString() as string,
+          coverImage: data.get('coverImage')?.toString() as string,
+          tags: data.get('tags')?.toString() as string,
+        },
+      })
+    }
   }
 
   return (
@@ -68,13 +74,18 @@ function Upload({ searchParam }: { searchParam: { message: string } }) {
           <label htmlFor="">tags</label>
           <input type="text" name="tags" />
         </div>
-        <button
-          formAction={posting}
-          className="px-2 py-1 bg-blue-500 text-white mt-2 text-xs rounded-md"
-        >
-          submit
-        </button>
-        {searchParam && <p className="text-red-500">{searchParam.message}</p>}
+        <div>
+          <button className="px-2 py-1 bg-blue-500 text-white text-xs mt-2 rounded-md">
+            submit
+          </button>
+          <button
+            className="px-2 py-1 bg-blue-500 text-white text-xs mt-2 rounded-md"
+            formAction={posting}
+          >
+            action
+          </button>
+        </div>
+        {/* {searchParam && <p className="text-red-500">{searchParam.message}</p>} */}
       </div>
     </form>
   )

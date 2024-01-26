@@ -2,17 +2,21 @@ import ShopListSection from '@/components/section/ShopListSection'
 import React from 'react'
 
 async function getShopItems() {
-  const shopItems = await (await fetch(`http://localhost:3000/api/shop`)).json()
+  const shopItems = await (
+    await fetch(`http://localhost:3000/api/shop`, {
+      cache: 'no-cache',
+    })
+  ).json()
 
-  console.log('shopItems', shopItems)
-  return
+  return shopItems
 }
 
 async function Shop() {
   const shopItems = await getShopItems()
+  console.log(shopItems)
   return (
     <div>
-      <ShopListSection />
+      <ShopListSection shops={shopItems} />
     </div>
   )
 }

@@ -1,8 +1,9 @@
+'use client'
 import Link from 'next/link'
 import ShopCard from '../card/ShopCard'
 import { Shop } from '@prisma/client'
 
-function ShopListSection() {
+function ShopListSection({ shops }: { shops: Shop[] }) {
   return (
     <section className="p-4">
       <div className="flex w-full justify-between">
@@ -28,8 +29,8 @@ function ShopListSection() {
       <div className="w-full bg-gray-300 flex h-1 my-2">
         {/* shop list */}
         <div>
-          {[1, 2, 3, 4, 5, 6, 7, 8, 9, 19].map((shop: any, index) => (
-            <Link href={`/shop/${shop.id}`} key={index}>
+          {shops.map((shop: Shop, index: number) => (
+            <Link key={shop.id} href={`/shop/${shop.id}`}>
               <ShopCard shop={shop} />
             </Link>
           ))}
